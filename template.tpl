@@ -146,6 +146,7 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const localStorage = require("localStorage");
 const getQueryParameters = require("getQueryParameters");
 const getTimestampMillis = require("getTimestampMillis");
+const encodeUriComponent = require("encodeUriComponent");
 const sendPixel = require("sendPixel");
 const injectHiddenIframe = require("injectHiddenIframe");
 
@@ -177,7 +178,9 @@ if (data.tagType === "conversion" && !qwarryId) {
 }
 
 // Postback is always done, even with an empty qwarryId
-const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ data.advertiserId +"&trackingId="+ qwarryId +"&value="+ data.customValue;
+const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ encodeUriComponent(data.advertiserId)+
+      "&trackingId="+ encodeUriComponent(qwarryId)+
+      "&value="+ encodeUriComponent(data.customValue);
 
 if (data.postbackMethod === "iframe") {
   injectHiddenIframe(qwarryPostbackUrl, data.gtmOnSuccess);

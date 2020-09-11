@@ -77,15 +77,15 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "TEXT",
-    "name": "advertiserId",
-    "displayName": "Advertiser ID",
+    "name": "advertiserTagId",
+    "displayName": "Advertiser tag ID",
     "simpleValueType": true,
     "valueValidators": [
       {
         "type": "NON_EMPTY"
       }
     ],
-    "help": "Your Qwarry advertiser ID"
+    "help": "Your Qwarry advertiser tag ID"
   },
   {
     "type": "TEXT",
@@ -178,7 +178,7 @@ if (data.tagType === "conversion" && !qwarryId) {
 }
 
 // Postback is always done, even with an empty qwarryId
-const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ encodeUriComponent(data.advertiserId)+
+const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ encodeUriComponent(data.advertiserTagId)+
       "&trackingId="+ encodeUriComponent(qwarryId)+
       "&value="+ encodeUriComponent(data.customValue);
 

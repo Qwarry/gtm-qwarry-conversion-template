@@ -77,15 +77,15 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "TEXT",
-    "name": "advertiserId",
-    "displayName": "Advertiser ID",
+    "name": "advertiserTagId",
+    "displayName": "Advertiser tag ID",
     "simpleValueType": true,
     "valueValidators": [
       {
         "type": "NON_EMPTY"
       }
     ],
-    "help": "Your Qwarry advertiser ID"
+    "help": "Your Qwarry advertiser tag ID"
   },
   {
     "type": "TEXT",
@@ -155,7 +155,7 @@ const QWARRY_ID_STORAGE_KEY_NAME = "qwarry_id";
 const QWARRY_ID_CREATED_AT_STORAGE_KEY_NAME = "qwarry_id_created_at";
 
 // URL query param always takes precedence over the storage
-let qwarryId = getQueryParameters(QWARRY_ID_URL_QUERY_PARAM_NAME);
+let qwarryId = getQueryParameters(QWARRY_ID_URL_QUERY_PARAM_NAME) || "";
 
 if (data.tagType === "conversion" && !qwarryId) {
   qwarryId = localStorage.getItem(QWARRY_ID_STORAGE_KEY_NAME) || "";
@@ -178,7 +178,7 @@ if (data.tagType === "conversion" && !qwarryId) {
 }
 
 // Postback is always done, even with an empty qwarryId
-const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ encodeUriComponent(data.advertiserId)+
+const qwarryPostbackUrl = "https://event-logger.qwarry.co/event/conversion?id="+ encodeUriComponent(data.advertiserTagId)+
       "&trackingId="+ encodeUriComponent(qwarryId)+
       "&value="+ encodeUriComponent(data.customValue);
 

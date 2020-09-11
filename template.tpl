@@ -155,7 +155,7 @@ const QWARRY_ID_STORAGE_KEY_NAME = "qwarry_id";
 const QWARRY_ID_CREATED_AT_STORAGE_KEY_NAME = "qwarry_id_created_at";
 
 // URL query param always takes precedence over the storage
-let qwarryId = getQueryParameters(QWARRY_ID_URL_QUERY_PARAM_NAME);
+let qwarryId = getQueryParameters(QWARRY_ID_URL_QUERY_PARAM_NAME) || "";
 
 if (data.tagType === "conversion" && !qwarryId) {
   qwarryId = localStorage.getItem(QWARRY_ID_STORAGE_KEY_NAME) || "";

@@ -15,7 +15,7 @@
 homepage: "https://qwarry.com/"
 documentation: "https://qwarry.github.io/gtm-qwarry-doc"
 versions:
-  - sha: #TODO
+  - sha: d9b1287b94b110d67dd7cb2aade981394e15a13e
     changeNotes: |2
       v1.1.0
       The "Advertiser ID" label becomes "Advertiser tag ID"
